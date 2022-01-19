@@ -1,0 +1,35 @@
+
+.navbar {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    margin: 0px auto;
+    max-width: 800px;
+    
+    background-color: #FECD45;
+    color: black;
+
+    font-size: large;
+    font-weight: bold;
+}
+
+.navbar .links{
+    margin-left: auto;
+}
+
+.content {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.navbar a{
+    margin-left: 16px;
+    text-decoration: none;
+    padding: 6px;
+    color: #2568FB;
+}
+
+.navbar a:hover{
+    color: black;
+}
