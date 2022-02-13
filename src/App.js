@@ -1,15 +1,27 @@
 import Navbar from './Navbar';
 import TaskComponent from './TasksComponent';
+import {  BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SignIn from './SignIn';
 
 function App() {
   
   return (
-    <div className="App">
-      <Navbar />
-      <div className="content">
-        <TaskComponent/>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <TaskComponent/>
+            </Route>
+            
+            <Route path="/signin">
+              <SignIn></SignIn>
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

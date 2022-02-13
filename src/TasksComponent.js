@@ -1,25 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './TaskComponent.module.css';
+import TaskList from './TaskList';
 
 const TaskComponent = () => {
     
     const [inputContentValue, setInputContentValue] = useState(['']);
     const [inputPriorityValue, setInputPriorityValue] = useState('');
     
-    const [tasks, setTasks] = useState([
-        {
-            content: 'Wyprowadzić psa na spacer', 
-            priority: 12,
-            priorityName: "heigh"
-        },
-        {
-            content: 'Zrobić zakupy', 
-            priority: 12,
-            priorityName: "heigh"
-        }
-    ]);
-    
+    const [tasks, setTasks] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    const [errMessage, setErrorMessage] = useState(null);
+
     const addTask = (contentValue, priorityValue) => {
         if(contentValue != "" && priorityValue != "none"){
             let priorityNameValue;
@@ -61,6 +53,25 @@ const TaskComponent = () => {
         setInputPriorityValue(event.target.value);
     }
     
+    useEffect(() => {
+        fetch('http://localhost:8000/tasks')
+            .then(res => {
+                if(res.ok != true){
+                   throw Error("Error with featching data from this source.");
+                }
+                return res.json();
+            })
+            .then(data => {
+                setTasks(data);
+                setIsPending(false);
+                setErrorMessage(null);
+            })
+            .catch((err) => {
+                setIsPending(false);
+                setErrorMessage(err.message);
+            })
+    }, []);
+
     return (
         <div className={`${styles.TaskComponent}`}>
             <h2> Create your the future with <span className={`${styles.text_blue}`}>myTask.com</span></h2>
@@ -82,17 +93,9 @@ const TaskComponent = () => {
             <button onClick={ () => addTask(inputContentValue, inputPriorityValue)}> Create task </button>
 
             <span className={`${styles.blue_title}`}> My tasks </span>
-
-            {
-                tasks.sort( (a,b) => {return b.priority - a.priority}),
-                tasks.map((task, index) => (
-                    <div className={`${styles.task}`} key={index}>
-                        <p> Task priority: {task.priorityName} </p>
-                        <p> {task.content} </p>
-                        <button onClick={ () => deleteTask({task})}> Make as completed </button>
-                    </div>
-                ))
-            }
+            {   errMessage && <div> { errMessage } </div>}
+            {   isPending && <div> Loading... </div>  }
+            {   tasks && <TaskList tasks={ tasks } onDelete={deleteTask} styles={styles} ></TaskList>   }
         </div>
     );
 }
