@@ -34,20 +34,35 @@ const TaskComponent = () => {
                 priorityName: priorityNameValue,
             }
             setTasks((previousTasks) => [...previousTasks, task]);
+
+            fetch('http://localhost:8000/tasks', {
+                method: 'POST',
+                headers: { "Content-Type":"application/json" },
+                body: JSON.stringify(task)
+            }).then(() => {
+                console.log("new task added");
+            })
+
             setInputContentValue("");
             setInputPriorityValue("none");
         }
     }
     
     const deleteTask = (value) => {
-        console.log(value);
+        console.log(value.task.id);
+
+        fetch('http://localhost:8000/tasks/'+value.task.id, {
+            method: 'DELETE',
+        }).then(() => {
+            console.log("Task deleted successful");
+        })
+        
         setTasks(tasks.filter(task => task !== value.task));
     }
 
     const handleChangeContentValue = (event) => {
         setInputContentValue(event.target.value);
     }
-
     
     const handleChangePriorityValue = (event) => {
         setInputPriorityValue(event.target.value);
@@ -72,6 +87,7 @@ const TaskComponent = () => {
             })
     }, []);
 
+    
     return (
         <div className={`${styles.TaskComponent}`}>
             <h2> Create your the future with <span className={`${styles.text_blue}`}>myTask.com</span></h2>
