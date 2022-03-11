@@ -90,7 +90,7 @@ const TaskComponent = () => {
     
     return (
         <div className={`${styles.TaskComponent}`}>
-            <h2> Create your the future with <span className={`${styles.text_blue}`}>myTask.com</span></h2>
+            <h2> Create your future with <span className={`${styles.text_blue}`}>myTask.com</span></h2>
             
             <p>Content
                 <input onChange={handleChangeContentValue} value={inputContentValue}/>
