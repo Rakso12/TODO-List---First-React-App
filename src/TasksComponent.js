@@ -13,18 +13,18 @@ const TaskComponent = () => {
     const [errMessage, setErrorMessage] = useState(null);
 
     const addTask = (contentValue, priorityValue) => {
-        if(contentValue != "" && priorityValue != "none"){
+        if(contentValue !== "" && priorityValue !== "none"){
             let priorityNameValue;
-            if(priorityValue == 3){
+            if(priorityValue === 3){
                 priorityNameValue = "small";
             }
-            else if(priorityValue == 6){
+            else if(priorityValue === 6){
                 priorityNameValue = "normal";
             }
-            else if(priorityValue == 9){
+            else if(priorityValue === 9){
                 priorityNameValue = "medium";
             }
-            else if(priorityValue == 12){
+            else if(priorityValue === 12){
                 priorityNameValue = "high";
             }
 
@@ -71,7 +71,7 @@ const TaskComponent = () => {
     useEffect(() => {
         fetch('http://localhost:8000/tasks')
             .then(res => {
-                if(res.ok != true){
+                if(res.ok !== true){
                    throw Error("Error with featching data from this source.");
                 }
                 return res.json();
@@ -89,8 +89,9 @@ const TaskComponent = () => {
 
     
     return (
+
         <div className={styles.TaskComponent}>
-            <h2> Create your the future with <span className={styles.text_blue}>myTask.com</span></h2>
+            <h2> Create your future with <span className={styles.text_blue}>myTask.com</span></h2>
             
             <p>Content
                 <input onChange={handleChangeContentValue} value={inputContentValue}/>
