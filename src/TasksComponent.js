@@ -89,8 +89,9 @@ const TaskComponent = () => {
 
     
     return (
-        <div className={`${styles.TaskComponent}`}>
-            <h2> Create your future with <span className={`${styles.text_blue}`}>myTask.com</span></h2>
+
+        <div className={styles.TaskComponent}>
+            <h2> Create your future with <span className={styles.text_blue}>myTask.com</span></h2>
             
             <p>Content
                 <input onChange={handleChangeContentValue} value={inputContentValue}/>
@@ -108,7 +109,7 @@ const TaskComponent = () => {
 
             <button onClick={ () => addTask(inputContentValue, inputPriorityValue)}> Create task </button>
 
-            <span className={`${styles.blue_title}`}> My tasks </span>
+            <span className={styles.blue_title}> My tasks </span>
             {   errMessage && <div> { errMessage } </div>}
             {   isPending && <div> Loading... </div>  }
             {   tasks && <TaskList tasks={ tasks } onDelete={deleteTask} styles={styles} ></TaskList>   }

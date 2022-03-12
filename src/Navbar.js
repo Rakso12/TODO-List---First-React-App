@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <nav className={`${styles.navbar}`}>
+        <nav className={styles.navbar}>
             <h1>myTask.com</h1>
-            <div className={`${styles.links}`}>
+            <div className={styles.links}>
                 <Link to="/">MyTask</Link>
                 <Link to="/signin">Sign in</Link>
             </div>
