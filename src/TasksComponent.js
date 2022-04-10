@@ -15,16 +15,16 @@ const TaskComponent = () => {
     const addTask = (contentValue, priorityValue) => {
         if(contentValue !== "" && priorityValue !== "none"){
             let priorityNameValue;
-            if(priorityValue === 3){
+            if(priorityValue == 3){
                 priorityNameValue = "small";
             }
-            else if(priorityValue === 6){
+            else if(priorityValue == 6){
                 priorityNameValue = "normal";
             }
-            else if(priorityValue === 9){
+            else if(priorityValue == 9){
                 priorityNameValue = "medium";
             }
-            else if(priorityValue === 12){
+            else if(priorityValue == 12){
                 priorityNameValue = "high";
             }
 
@@ -107,7 +107,7 @@ const TaskComponent = () => {
                 </select>
             </p>
 
-            <button onClick={ () => addTask(inputContentValue, inputPriorityValue)}> Create task </button>
+            <button onClick={ () => addTask(inputContentValue, inputPriorityValue)} className={styles.createButton}> Create task </button>
 
             <span className={styles.blue_title}> My tasks </span>
             {   errMessage && <div> { errMessage } </div>}

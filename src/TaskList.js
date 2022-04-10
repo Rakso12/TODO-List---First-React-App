@@ -17,7 +17,7 @@ const TaskList = ({ tasks, onDelete, styles }) => {
                     
                     <div className={styles.taskContent}> {task.content} </div>
                     
-                    <button onClick={ () => onDelete({task})}> <span className={styles.acceptIcon}> <BiCheck /> </span> Complete </button>
+                    <button onClick={ () => onDelete({task}) } className={styles.acceptButton}><BiCheck /> Complete </button>
                 </div>
             ))
     );

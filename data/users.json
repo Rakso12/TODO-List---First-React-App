@@ -1,0 +1,25 @@
+{
+    "users": [
+        {
+          "id" : 1,
+          "login": "oki",
+          "password": "123",
+          "firstName": "Piotr",
+          "lastName": "Nowak"
+        },
+        {
+          "id" : 2,
+          "login": "test",
+          "password": "test",
+          "firstName": "Karol",
+          "lastName": "Kowalski"
+        },
+        {
+          "id" : 3,
+          "login": "kod",
+          "password": "skni",
+          "firstName": "Koło",
+          "lastName": "Naukowe"
+        }
+    ]
+  }

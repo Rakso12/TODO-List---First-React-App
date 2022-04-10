@@ -3,8 +3,11 @@ import TaskComponent from './TasksComponent';
 import {  BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignIn from './SignIn';
 
+
 function App() {
   
+  var isShow = false;
+
   return (
     <Router>
       <div className="App">
@@ -13,15 +16,20 @@ function App() {
           <Switch>
             <Route exact path="/">
               <TaskComponent/>
+              
             </Route>
             
             <Route path="/signin">
               <SignIn></SignIn>
             </Route>
-          </Switch>
+          </Switch>          
         </div>
+        
       </div>
+      
+        
     </Router>
+    
   );
 }
 
